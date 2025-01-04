@@ -12,11 +12,20 @@
 
 ## Temporal
 
-- Start the Temporal Server
+Install Temporal Server: https://learn.temporal.io/getting_started/go/dev_environment/
+
+```bash
+brew install temporal
+```
+
+Start the Temporal Server
+
 ```bash
 temporal-server start
 ```
-- Start the Temporal Worker
+
+Start the Temporal Worker
+
 ```bash
 rake temporal:start_worker
 ```
