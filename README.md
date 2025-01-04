@@ -8,6 +8,7 @@
 - Sorbet
 - Sidekiq
   - Redis
+- Temporal
 
 
 ## Temporal
@@ -23,6 +24,8 @@ Start the Temporal Server
 ```bash
 temporal-server start
 ```
+
+Access the UI: http://localhost:8233/namespaces/ruby-samples/workflows
 
 Start the Temporal Worker
 
