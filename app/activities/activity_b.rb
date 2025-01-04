@@ -1,6 +1,6 @@
 class ActivityB < Temporal::Activity
   def execute(name)
-    sleep 100
+    sleep 10
     "#{name} from Activity B"
   end
 end
