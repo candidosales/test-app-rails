@@ -65,11 +65,15 @@ end
 # GraphQL
 gem "graphql", "~> 2.4"
 gem "graphiql-rails", group: :development
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem "sprockets-rails", require: "sprockets/railtie"
 
 # Sorbet
-gem 'sorbet-static-and-runtime'
-gem 'tapioca', require: false, :group => [:development, :test]
+gem "sorbet-static-and-runtime"
+gem "tapioca", require: false, group: [ :development, :test ]
 
 # Sidekiq
-gem 'sidekiq'
+gem "sidekiq"
+
+# Temporal
+gem "temporal-ruby", github: "coinbase/temporal-ruby"
+gem "google-protobuf", "~> 3.19"
