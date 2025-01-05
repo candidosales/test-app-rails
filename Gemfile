@@ -77,3 +77,4 @@ gem "sidekiq"
 # Temporal
 gem "temporal-ruby", github: "coinbase/temporal-ruby"
 gem "google-protobuf", "~> 3.19"
+gem "colorize", "~> 0.8.1"

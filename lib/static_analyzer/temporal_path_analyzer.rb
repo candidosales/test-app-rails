@@ -56,47 +56,78 @@ class TemporalPathAnalyzer
       content = File.read(file)
       begin
         ast = Parser::CurrentRuby.parse(content)
-        process_worker_registrations(ast, file) if ast
+        if ast
+          # Process the entire AST to find registrations
+          process_node_for_registrations(ast, file)
+        end
       rescue Parser::SyntaxError => e
         puts "Syntax error in #{file}: #{e.message}"
       end
     end
   end
 
-  def process_worker_registrations(node, file)
+  def process_node_for_registrations(node, file, in_worker_block = false)
     return unless node.is_a?(Parser::AST::Node)
 
+    # Check if this node initializes a Temporal worker
     if temporal_worker_initialization?(node)
       @worker_files << file
-      process_registration_block(node, file)
+      in_worker_block = true
     end
 
-    node.children.each { |child| process_worker_registrations(child, file) }
+    # If we're in a worker block, check for registrations
+    if in_worker_block && registration_node?(node)
+      registration_type = node.children[1]
+      class_name = extract_registration_class_name(node)
+
+      if class_name
+        @registrations << {
+          type: registration_type,
+          class_name: class_name,
+          worker_file: file.relative_path_from(@rails_root).to_s,
+          class_file: @class_definitions[class_name]
+        }
+      end
+    end
+
+    # Recursively process all children with the current worker block state
+    node.children.each do |child|
+      process_node_for_registrations(child, file, in_worker_block)
+    end
   end
 
   def temporal_worker_initialization?(node)
     return false unless node.type == :send
 
-    receiver = node.children[0]
-    method_name = node.children[1]
+    # Match both direct initialization and assignment
+    # worker = Temporal::Worker.new
+    # Temporal::Worker.new
+    if node.children[1] == :new
+      receiver = node.children[0]
+      return temporal_worker_constant?(receiver)
+    end
 
-    receiver &&
-      receiver.type == :const &&
-      receiver.children[1] == :Temporal &&
-      method_name == :new
+    # Match assignment to worker variable
+    if node.type == :lvasgn && node.children[0] == :worker
+      value = node.children[1]
+      return value && value.type == :send && temporal_worker_constant?(value.children[0])
+    end
+
+    false
+  end
+
+  def temporal_worker_constant?(node)
+    return false unless node&.type == :const
+
+    # Check for Temporal::Worker
+    parent = node.children[0]
+    return false unless parent&.type == :const
+    return false unless parent.children[1] == :Temporal
+
+    node.children[1] == :Worker
   end
 
   def process_registration_block(node, file)
-    parent = node.parent
-    while parent
-      if parent.type == :block
-        find_registrations(parent, file)
-      end
-      parent = parent.parent
-    end
-  end
-
-  def find_registrations(node, file)
     return unless node.is_a?(Parser::AST::Node)
 
     if node.type == :send && [ :register_workflow, :register_activity ].include?(node.children[1])
@@ -113,11 +144,16 @@ class TemporalPathAnalyzer
       end
     end
 
-    node.children.each { |child| find_registrations(child, file) }
+    node.children.each { |child| process_registration_block(child, file) }
+  end
+
+  def registration_node?(node)
+    node.type == :send &&
+      [ :register_workflow, :register_activity ].include?(node.children[1])
   end
 
   def ruby_files
-    Dir.glob(@rails_root.join("**", "*.rb"))
+    Dir.glob(@rails_root.join("**", "*.{rb,rake}"))
       .reject { |f| f.include?("/vendor/") || f.include?("/tmp/") }
       .map { |f| Pathname.new(f) }
   end
