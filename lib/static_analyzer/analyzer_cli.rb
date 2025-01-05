@@ -9,11 +9,12 @@ class AnalyzerCLI
     if issues.empty?
       puts "No non-deterministic issues found!"
     else
-      puts "Found #{issues.size} potential non-deterministic issues:"
+      puts "\nFound #{issues.size} at #{file_path} potential non-deterministic issues:".yellow
       issues.each do |issue|
-        puts "\nType: #{issue[:type]}"
-        puts "Message: #{issue[:message]}"
-        puts "Location: #{issue[:location][:class]}##{issue[:location][:method]}"
+        puts "Type: #{issue[:type]}".yellow
+        puts "Message: #{issue[:message]}".yellow
+        puts "Location: #{issue[:location][:class]}##{issue[:location][:method]}".yellow
+        puts "\n\n"
       end
     end
   end
