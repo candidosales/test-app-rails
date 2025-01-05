@@ -35,7 +35,7 @@ class AnalyzerCLI
       raise NonDeterministicError.new(issues, file_path)
     end
 
-    0 # Success exit code
+    issues # Success exit code
 
   rescue NonDeterministicError => e
     puts "\nError: #{e.message}".red

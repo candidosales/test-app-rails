@@ -7,10 +7,16 @@ namespace :temporal do
     # AnalyzerCLI.run("app/activities/activity_a.rb")
     report_files = FileFinderCLI.run(".")
 
-    puts "\n====================".blue
-    puts "Analyzing Temporal Files: \n".blue
+    puts "\nAnalyzing Temporal Files:".blue
+    puts "====================".blue
+
+    result = nil
     report_files.each do |file|
-      AnalyzerCLI.run(file)
+      result = AnalyzerCLI.run(file)
+    end
+
+    if result.empty?
+      puts "\nNo issues found! Congrats!".green
     end
   end
 end

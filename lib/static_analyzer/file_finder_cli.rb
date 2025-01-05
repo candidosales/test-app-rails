@@ -18,6 +18,7 @@ class FileFinderCLI
     end
 
     puts "\nSummary:".yellow
+    puts "====================".yellow
     puts "Total Temporal Files: #{report[:stats][:total_workflows] + report[:stats][:total_activities]}"
 
     report[:workflows] + report[:activities]
