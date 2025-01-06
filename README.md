@@ -10,6 +10,13 @@
   - Redis
 - Temporal
 
+## First init
+
+```bash
+bundle install
+rails db:migrate
+rails s
+```
 
 ## Temporal
 
@@ -22,7 +29,7 @@ brew install temporal
 Start the Temporal Server
 
 ```bash
-temporal-server start
+temporal server start-dev
 ```
 
 Access the UI: http://localhost:8233/namespaces/ruby-samples/workflows
