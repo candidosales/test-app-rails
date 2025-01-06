@@ -39,3 +39,9 @@ Start the Temporal Worker
 ```bash
 rake temporal:start_worker
 ```
+
+Run an workflow
+
+```
+curl -X GET 'http://127.0.0.1:3000/temporal?name=test'
+```
