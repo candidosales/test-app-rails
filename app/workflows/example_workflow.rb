@@ -7,6 +7,9 @@ class ExampleWorkflow < Temporal::Workflow
     if workflow.has_release?(:activity_c)
       result = ActivityC.execute!(result)
     end
+
+    result = ActivityD.execute!(result)
+
     logger.info "Hello, #{result}!"
   end
 end

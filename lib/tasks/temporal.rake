@@ -9,6 +9,7 @@ namespace :temporal do
     worker.register_activity(ActivityA)
     worker.register_activity(ActivityB)
     worker.register_activity(ActivityC)
+    worker.register_activity(ActivityD)
 
     worker.register_workflow(NotificationWorkflow)
     worker.register_activity(SendNotificationActivity)

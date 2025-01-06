@@ -1,8 +1,6 @@
 class TemporalController < ApplicationController
   def create
-    result = Temporal.start_workflow(
-      ExampleWorkflow,
-      input: params[:name])
+    result = TemporalService.start_workflow(input: params[:name])
     render plain: "ExampleWorkflow started with name: #{params[:name]}, workflow_id: #{result}"
   end
 
