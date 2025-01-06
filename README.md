@@ -40,6 +40,12 @@ Start the Temporal Worker
 rake temporal:start_worker
 ```
 
+Run multiple workflows
+
+```bash
+rake scheduler:run_periodic_task
+```
+
 Run an workflow
 
 ```
