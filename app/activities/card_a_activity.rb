@@ -1,4 +1,4 @@
-class CardActivity < Temporal::Activity
+class CardAActivity < Temporal::Activity
   def execute(name)
     sleep 5
     "#{name} -> CardActivity"

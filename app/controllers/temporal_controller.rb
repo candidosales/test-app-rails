@@ -6,7 +6,7 @@ class TemporalController < ApplicationController
 
   def notification
     result = Temporal.start_workflow(
-      NotificationWorkflow,
+      NotificationBWorkflow,
       input: params[:name])
     render plain: "NotificationWorkflow started with name: #{params[:name]}, workflow_id: #{result}"
   end

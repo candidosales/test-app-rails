@@ -3,7 +3,7 @@ class ActivityD < Temporal::Activity
     sleep 15
     "#{name} -> Activity D"
     Temporal.start_workflow(
-      NotificationWorkflow,
+      NotificationBWorkflow,
       input: "#{name} -> Activity D")
   end
 end

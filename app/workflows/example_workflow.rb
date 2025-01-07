@@ -2,22 +2,29 @@ class ExampleWorkflow < Temporal::Workflow
   def execute(name)
     result = ActivityA.execute!(name)
     result = ActivityB.execute!(result)
-    # result = SendNotificationActivity.execute!(result)
+
     # result = Temporal.start_workflow(
-    #   NotificationWorkflow,
-    #   input: name)
+    #   CardBWorkflow,
+    #   input: result)
 
-    if workflow.has_release?(:activity_c)
-      result = ActivityC.execute!(result)
+
+    # if workflow.has_release?(:activity_f)
+    #   result = ActivityF.execute!(result)
+    # end
+    #
+    # result = ActivityC.execute!(result)
+    #
+    result = Temporal.start_workflow(
+      CardBWorkflow,
+      input: result)
+
+    score = nil
+    workflow.on_signal("score") do |signal_value|
+      score = signal_value
     end
 
-    if workflow.has_release?(:activity_d)
-      result = ActivityD.execute!(result)
-    end
+    workflow.wait_until { score }
 
-    if workflow.has_release?(:activity_e)
-      result = ActivityE.execute!(result)
-    end
 
     logger.info "Hello, #{result}!"
   end
