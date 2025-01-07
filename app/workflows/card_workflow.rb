@@ -1,6 +1,6 @@
 class CardWorkflow < Temporal::Workflow
   def execute(name)
-    result = SendNotificationActivity.execute!(name)
-    logger.info "Send notification, #{result}!"
+    result = CardActivity.execute!(name)
+    logger.info "Card, #{result}!"
   end
 end
