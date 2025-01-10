@@ -125,10 +125,18 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (3.25.5-aarch64-linux)
-    google-protobuf (3.25.5-arm64-darwin)
-    google-protobuf (3.25.5-x86_64-darwin)
-    google-protobuf (3.25.5-x86_64-linux)
+    google-protobuf (4.29.3-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     googleapis-common-protos-types (1.16.0)
       google-protobuf (>= 3.18, < 5.a)
     graphiql-rails (1.10.1)
@@ -441,7 +449,7 @@ DEPENDENCIES
   capybara
   colorize (~> 0.8.1)
   debug
-  google-protobuf (~> 3.19)
+  google-protobuf (~> 4.29)
   graphiql-rails
   graphql (~> 2.4)
   importmap-rails
