@@ -133,9 +133,10 @@ GEM
       google-protobuf (>= 3.18, < 5.a)
     graphiql-rails (1.10.1)
       railties
-    graphql (2.4.8)
+    graphql (2.4.10)
       base64
       fiber-storage
+      logger
     grpc (1.68.1-aarch64-linux)
       google-protobuf (>= 3.25, < 5.0)
       googleapis-common-protos-types (~> 1.0)
