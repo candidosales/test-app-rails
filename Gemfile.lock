@@ -131,7 +131,7 @@ GEM
     google-protobuf (3.25.6-x86_64-linux)
     googleapis-common-protos-types (1.18.0)
       google-protobuf (>= 3.18, < 5.a)
-    graphiql-rails (1.10.3)
+    graphiql-rails (1.10.4)
       railties
     graphql (2.4.10)
       base64
@@ -244,7 +244,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.10)
+    rack (3.1.11)
     rack-session (2.1.0)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
