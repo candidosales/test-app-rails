@@ -133,7 +133,7 @@ GEM
       google-protobuf (>= 3.18, < 5.a)
     graphiql-rails (1.10.3)
       railties
-    graphql (2.4.10)
+    graphql (2.4.12)
       base64
       fiber-storage
       logger
