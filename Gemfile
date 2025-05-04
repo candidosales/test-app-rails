@@ -63,16 +63,16 @@ group :test do
 end
 
 # GraphQL
-gem "graphql", "~> 2.4"
+gem "graphql", "~> 2.5"
 gem "graphiql-rails", group: :development
 gem "sprockets-rails", require: "sprockets/railtie"
 
 # Sorbet
-gem "sorbet-static-and-runtime"
+gem "sorbet-static-and-runtime", "~> 0.5.12048"
 gem "tapioca", require: false, group: [ :development, :test ]
 
 # Sidekiq
-gem "sidekiq"
+gem "sidekiq", "~>8.0.3"
 
 # Temporal
 gem "temporal-ruby", github: "coinbase/temporal-ruby"

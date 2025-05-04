@@ -457,7 +457,7 @@ DEPENDENCIES
   debug
   google-protobuf (~> 3.19)
   graphiql-rails
-  graphql (~> 2.4)
+  graphql (~> 2.5)
   importmap-rails
   jbuilder
   kamal
@@ -466,11 +466,11 @@ DEPENDENCIES
   rails (~> 8.0.0)
   rubocop-rails-omakase
   selenium-webdriver
-  sidekiq
+  sidekiq (~> 8.0.3)
   solid_cable
   solid_cache
   solid_queue
-  sorbet-static-and-runtime
+  sorbet-static-and-runtime (~> 0.5.12048)
   sprockets-rails
   sqlite3 (>= 2.1)
   stimulus-rails
