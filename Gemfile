@@ -68,7 +68,7 @@ gem "graphiql-rails", group: :development
 gem "sprockets-rails", require: "sprockets/railtie"
 
 # Sorbet
-gem "sorbet-static-and-runtime", "~> 0.5.12135"
+gem "sorbet-static-and-runtime", "~> 0.5.12142"
 gem "tapioca", require: false, group: [ :development, :test ]
 
 # Sidekiq
