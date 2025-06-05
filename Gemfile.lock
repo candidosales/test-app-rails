@@ -356,14 +356,14 @@ GEM
       fugit (~> 1.11.0)
       railties (>= 7.1)
       thor (~> 1.3.1)
-    sorbet (0.5.12135)
-      sorbet-static (= 0.5.12135)
-    sorbet-runtime (0.5.12135)
-    sorbet-static (0.5.12135-aarch64-linux)
-    sorbet-static (0.5.12135-x86_64-linux)
-    sorbet-static-and-runtime (0.5.12135)
-      sorbet (= 0.5.12135)
-      sorbet-runtime (= 0.5.12135)
+    sorbet (0.5.12152)
+      sorbet-static (= 0.5.12152)
+    sorbet-runtime (0.5.12152)
+    sorbet-static (0.5.12152-aarch64-linux)
+    sorbet-static (0.5.12152-x86_64-linux)
+    sorbet-static-and-runtime (0.5.12152)
+      sorbet (= 0.5.12152)
+      sorbet-runtime (= 0.5.12152)
     spoom (1.7.2)
       erubi (>= 1.10.0)
       prism (>= 0.28.0)
@@ -466,7 +466,7 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
-  sorbet-static-and-runtime (~> 0.5.12135)
+  sorbet-static-and-runtime (~> 0.5.12152)
   sprockets-rails
   sqlite3 (>= 2.1)
   stimulus-rails
