@@ -72,7 +72,7 @@ gem "sorbet-static-and-runtime", "~> 0.5.12176"
 gem "tapioca", require: false, group: [ :development, :test ]
 
 # Sidekiq
-gem "sidekiq", "~>8.0.4"
+gem "sidekiq", "~>8.0.5"
 
 # Temporal
 gem "temporal-ruby", github: "coinbase/temporal-ruby"
