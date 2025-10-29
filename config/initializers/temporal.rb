@@ -1,4 +1,5 @@
 require "temporal-ruby"
+require "grpc"
 
 Temporal.configure do |config|
   config.host = "localhost"
@@ -12,4 +13,7 @@ begin
   Temporal.register_namespace("ruby-samples", "A safe space for playing with Temporal Ruby")
 rescue Temporal::NamespaceAlreadyExistsFailure
   nil # service was already registered
+rescue GRPC::Unavailable, Errno::ECONNREFUSED => e
+  Rails.logger.warn "Temporal server is not available: #{e.message}" if defined?(Rails.logger)
+  # Continue without Temporal for development
 end
